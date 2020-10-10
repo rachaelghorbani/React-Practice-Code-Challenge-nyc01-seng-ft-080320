@@ -10,11 +10,18 @@ function Sushi(props){
 		props.sushiClickHandler(props.sushi);
     };
     
+    const decide = () => {
+        if(!sushiEaten()){
+            return localClickHandler
+        } else {
+            return null
+        }
+    }
  
 	
 		return (
 			<div className="sushi">
-				<div className="plate" onClick={localClickHandler}>
+				<div className="plate" onClick={decide()}>
 					{/* Tell me if this sushi has been eaten! */
 
 					sushiEaten() ? null : <img src={props.sushi.img_url} alt="" width="100%" />}

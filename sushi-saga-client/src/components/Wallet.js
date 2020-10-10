@@ -18,6 +18,7 @@ class Wallet extends React.Component {
             amount: ''
         })
     }
+    
     render(){
         return (
             <div>
