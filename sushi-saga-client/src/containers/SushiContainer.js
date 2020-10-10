@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Fragment } from 'react';
 import MoreButton from '../components/MoreButton';
 import Sushi from '../components/Sushi';
 
@@ -14,7 +14,7 @@ const SushiContainer = (props) => {
     
 	const renderSushis = () => {
 		return filteredSushis().map((sushi) => {
-			return <Sushi key={sushi.id} sushi={sushi} />;
+			return <Sushi key={sushi.id} sushi={sushi} sushiClickHandler={props.sushiClickHandler}/>;
 		});
 	};
 	
