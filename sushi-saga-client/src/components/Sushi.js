@@ -1,14 +1,12 @@
 import React from 'react';
 
 class Sushi extends React.Component {
-	state = {
-        eaten: false
-    };
-
+	sushiEaten = () => {
+		return this.props.consumedSushis.find((sushi) => {
+			return sushi.id === this.props.sushi.id;
+		});
+	};
 	localClickHandler = () => {
-        this.setState({
-            eaten: true
-        })
 		this.props.sushiClickHandler(this.props.sushi);
 	};
 	render() {
@@ -17,7 +15,7 @@ class Sushi extends React.Component {
 				<div className="plate" onClick={this.localClickHandler}>
 					{/* Tell me if this sushi has been eaten! */
 
-					this.state.eaten ? null : <img src={this.props.sushi.img_url} alt="" width="100%" />}
+					this.sushiEaten() ? null : <img src={this.props.sushi.img_url} alt="" width="100%" />}
 				</div>
 				<h4 className="sushi-details">
 					{this.props.sushi.name} - ${this.props.sushi.price}

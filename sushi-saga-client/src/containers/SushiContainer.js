@@ -14,7 +14,7 @@ const SushiContainer = (props) => {
     
 	const renderSushis = () => {
 		return filteredSushis().map((sushi) => {
-			return <Sushi key={sushi.id} sushi={sushi} sushiClickHandler={props.sushiClickHandler}/>;
+			return <Sushi key={sushi.id} sushi={sushi} sushiClickHandler={props.sushiClickHandler} consumedSushis={props.consumedSushis}/>;
 		});
 	};
 	

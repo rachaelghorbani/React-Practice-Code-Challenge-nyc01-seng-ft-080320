@@ -9,7 +9,7 @@ const Table = (props) => {
 
 	return (
 		<Fragment>
-			<h1 className="remaining">You have: ${/* Give me how much money I have left */} remaining!</h1>
+			<h1 className="remaining">You have: ${props.amountToSpend} remaining!</h1>
 			<div className="table">
 				<div className="stack">
 					{/* 

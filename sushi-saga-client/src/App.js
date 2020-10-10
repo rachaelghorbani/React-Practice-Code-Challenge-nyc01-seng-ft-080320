@@ -13,6 +13,7 @@ class App extends Component {
             minReturnedId: 1,
             maxReturnedId: 4,
             consumedSushis: [],
+            amountToSpend: 100
         }
     }
     moreClickHandler = () => {
@@ -23,10 +24,19 @@ class App extends Component {
     }
 
     sushiClickHandler = sushiObj => {
-        this.setState({
-            consumedSushis: [...this.state.consumedSushis, sushiObj],
-        })
+
+        if(sushiObj.price <= this.state.amountToSpend){
+            this.setState((prevState) => ({
+                consumedSushis: [...this.state.consumedSushis, sushiObj],
+                amountToSpend: prevState.amountToSpend - sushiObj.price
+            }))
+        }
+        //if amount to spend is greater than sushiObj.price do the stuff 
+        //need to reset the amount to spend by the sushiObj.price
+      
     }
+
+    //send back down consumed sushis to sushi. if we can find the sushi set some value to true
 
     /* onclick
     1. trigger something as false so that we don't render the sushi image in sushi.js
@@ -47,11 +57,10 @@ class App extends Component {
     
 
   render() {
-      console.log(this.state)
     return (
       <div className="app">
-        <SushiContainer sushiClickHandler={this.sushiClickHandler} minReturnedId={this.state.minReturnedId} maxReturnedId={this.state.maxReturnedId} clickHandler={this.moreClickHandler}sushis={this.state.api}/>
-        <Table consumedSushis={this.state.consumedSushis}/>
+        <SushiContainer consumedSushis={this.state.consumedSushis}sushiClickHandler={this.sushiClickHandler} minReturnedId={this.state.minReturnedId} maxReturnedId={this.state.maxReturnedId} clickHandler={this.moreClickHandler}sushis={this.state.api}/>
+        <Table amountToSpend={this.state.amountToSpend}consumedSushis={this.state.consumedSushis}/>
       </div>
     );
   }
