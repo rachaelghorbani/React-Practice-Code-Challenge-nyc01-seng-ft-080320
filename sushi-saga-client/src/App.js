@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Wallet from './components/Wallet';
 import SushiContainer from './containers/SushiContainer';
 import Table from './containers/Table';
 
@@ -15,6 +16,13 @@ class App extends Component {
             consumedSushis: [],
             amountToSpend: 100
         }
+    }
+
+    addMoneyHandler = amt => {
+        const parsed = parseInt(amt, 10)
+        this.setState( prevState => ({
+            amountToSpend: prevState.amountToSpend + parsed
+        }))
     }
     moreClickHandler = () => {
         this.setState((prevState) => ({
@@ -61,6 +69,7 @@ class App extends Component {
       <div className="app">
         <SushiContainer consumedSushis={this.state.consumedSushis}sushiClickHandler={this.sushiClickHandler} minReturnedId={this.state.minReturnedId} maxReturnedId={this.state.maxReturnedId} clickHandler={this.moreClickHandler}sushis={this.state.api}/>
         <Table amountToSpend={this.state.amountToSpend}consumedSushis={this.state.consumedSushis}/>
+        <Wallet addMoneyHandler={this.addMoneyHandler}/>
       </div>
     );
   }
