@@ -31,7 +31,6 @@ class App extends Component {
 				maxReturnedId: 4
 			});
 		} else {
-			//if the min returned id is greater than the value of this.state.api.length, reset the values to 0 and 100, otherwise
 			this.setState((prevState) => ({
 				minReturnedId: (prevState.minReturnedId += 4),
 				maxReturnedId: (prevState.maxReturnedId += 4)
