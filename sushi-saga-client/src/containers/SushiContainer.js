@@ -20,6 +20,8 @@ const SushiContainer = (props) => {
 	
 		return (
 			<Fragment>
+                <div>Total Sushis Eaten: {props.consumedSushis.length}</div>
+                <br />
 				<div className="belt">
 					{renderSushis()
 					/* 

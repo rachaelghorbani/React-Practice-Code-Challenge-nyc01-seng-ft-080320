@@ -32,8 +32,8 @@ class App extends Component {
 			});
 		} else {
 			this.setState((prevState) => ({
-				minReturnedId: (prevState.minReturnedId += 4),
-				maxReturnedId: (prevState.maxReturnedId += 4)
+				minReturnedId: prevState.minReturnedId + 4,
+				maxReturnedId: prevState.maxReturnedId + 4
 			}));
 		}
 	};
@@ -67,6 +67,7 @@ class App extends Component {
 	render() {
 		return (
 			<div className="app">
+				<Wallet addMoneyHandler={this.addMoneyHandler} />
 				<SushiContainer
 					consumedSushis={this.state.consumedSushis}
 					sushiClickHandler={this.sushiClickHandler}
@@ -76,7 +77,6 @@ class App extends Component {
 					sushis={this.state.api}
 				/>
 				<Table amountToSpend={this.state.amountToSpend} consumedSushis={this.state.consumedSushis} />
-				<Wallet addMoneyHandler={this.addMoneyHandler} />
 			</div>
 		);
 	}
